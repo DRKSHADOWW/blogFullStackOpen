@@ -1,0 +1,52 @@
+### GET 
+GET http://localhost:3001/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY3MDVjN2E4MTc3NjI4MGUyM2NkMmE3YyIsImlhdCI6MTcyODQ5MDE2OX0.Du4WVQqHvBq37S7KHQ_MpdFk16HfkWFfN1T3JdaYVN8
+
+
+### POST
+POST  http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Blog Title",
+    "author": "Blog Author",
+    "url": "https://example.com",
+    "likes":  10
+
+}
+
+### Post userId
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+    {
+        "title": "nuevo blog",
+        "author": "miguelon",
+        "url":  "https://example.com",
+        "userId": "6705c7a81776280e23cd2a7c"
+    }
+
+
+### PUT
+PUT  http://localhost:3001/api/blogs/66fdc4e53d4fee4109f2c361
+Content-Type: application/json
+
+{
+    "likes": 34
+}
+
+### PUT "not found"
+PUT  http://localhost:3001/api/blogs/66fdc4e53d4fee4109f2c367
+Content-Type: application/json
+
+{
+    "likes": 57
+}
+
+### PUT _id < 24
+PUT  http://localhost:3001/api/blogs/66fdc4e53d
+Content-Type: application/json
+
+{
+    "likes": 57
+}
