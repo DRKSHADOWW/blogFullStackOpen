@@ -85,4 +85,57 @@ const baseUrl = '/api/notes' // se omite la url ya están en la misma direccion
 
 
 
+## prop-types
+npm install prop-types
+import PropTypes from 'prop-types'
 
+#### Testing React
+
+## jsdom
+npm install --save-dev vitest jsdom
+
+npm install --save-dev @testing-library/react @testing-library/jest-dom
+
+
+package.json:
+{
+  "scripts": {
+    // ...
+    "test": "vitest run"
+  }
+  // ...
+}
+
+archivo testSetup.js en carpeta raiz:
+
+import { afterEach } from 'vitest'
+import { cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/vitest'
+
+afterEach(() => {
+  cleanup()
+})
+
+vite.config.js:
+
+
+
+
+export default defineConfig({
+  // ...
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './testSetup.js', 
+  }
+})
+
+## repositorio
+https://github.com/mpampols/fullstackopen.part5
+
+# Eslint se queja de las palabras clave test y expect en las pruebas. El problema se puede resolver instalando eslint-plugin-vitest-globals
+
+npm install --save-dev eslint-plugin-vitest-globals
+
+# Instalemos la librería user-event
+npm install --save-dev @testing-library/user-event

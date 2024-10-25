@@ -1,16 +1,14 @@
-import { Togglable } from "./Togglable"
+import Togglable  from "./Togglable"
+import PropTypes from 'prop-types'
 
-export const LoginForm = ({ handleLogin, username, onChangeUsername, password, onChangePassword, buttonLabel }) => {
 
-
-  
-
+export const LoginForm = ({ handleLogin,username,  onChangeUsername,password, onChangePassword }) => {
 
 
   return (
 <>
 <div>
-  <Togglable buttonLabel='Show Login'>
+  <Togglable buttonLabel='Show Login' >
     <form onSubmit={handleLogin}>
       <div>
         <label>Username: </label>
@@ -38,5 +36,13 @@ export const LoginForm = ({ handleLogin, username, onChangeUsername, password, o
 
     </>
   )
+}
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  onChangeUsername: PropTypes.func.isRequired,
+  onChangePassword: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired
 }
 

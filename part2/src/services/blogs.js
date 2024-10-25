@@ -15,7 +15,7 @@ const getAll = () => {
 const create = (newBlog ) => {
   const config = {
       headers:{
-        authorization:  token 
+        authorization: token 
       }}
   return axios.post(baseUrl, newBlog, config)
 }
@@ -23,10 +23,21 @@ const create = (newBlog ) => {
 const blogDelete = (id) =>{
   const config = {
     headers:{
-      authorization:  token 
+      authorization: token 
     }}
  return axios.delete(`${baseUrl}/${id}`, config)
   
 }
 
-export default { getAll, create, blogDelete, setToken }
+const update = (id, updatedBlog) => {
+  const config = {
+    headers: {
+      authorization: token
+    }}
+
+    return  axios.put(`${baseUrl}/${id}`, updatedBlog, config)
+
+}
+
+
+export default { getAll, create, blogDelete, setToken, update }

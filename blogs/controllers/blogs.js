@@ -12,7 +12,7 @@ blogsRouter.get('/', async (request, response) => {
 })
 
 blogsRouter.post('/',tokenExtractor, async (request, response) => {
-  const { title, author, url, likes} = request.body;
+  const { title, author, url} = request.body;
   
   if (!title || !author || !url) {
     return response.status(400).json({ error: 'title, author, and url are required' });

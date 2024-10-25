@@ -7,13 +7,11 @@ import { BlogForm } from './components/BlogForm'
 import { LoginForm } from './components/LoginForm'
 
 const App = () => {
-  const [blogs, setBlogs] = useState([])
 
+  const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('')
-  
   const [user, setUser] = useState(null) 
-
   const [errorMessage,  setErrorMessage] = useState(null)
 
   useEffect(() => {
@@ -30,9 +28,8 @@ const App = () => {
       const user = JSON.parse(loggedUserJSON);
         setUser(user)
         blogService.setToken(user.token);
-      
+
     }
-  
 }, [])
 
   const handleLogin = async (event) => {
@@ -69,7 +66,6 @@ const App = () => {
   }
 
   const handleLogout = () => {
-    console.log(user)
     try {
       if (user) { 
         setUser(null) 
@@ -87,13 +83,13 @@ const App = () => {
 
     if (!newBlog.title || !newBlog.author || !newBlog.url) {
       setErrorMessage('Please complete all fields');
-      return;
+      return
     }
     
     try{
     const createBlogs = await blogService
     .create(newBlog)
-      setBlogs([...blogs, createBlogs])
+      setBlogs(prevBlogs => [...prevBlogs, createBlogs])
       setErrorMessage(`blog added successfully!`)
       
       setTimeout(() => {
@@ -116,7 +112,6 @@ const App = () => {
       blogService.setToken(user.token);
       setUser(user)
    
-  
       try {
         await blogService.blogDelete(id);
         setBlogs(prevBlogs => prevBlogs.filter(blog => blog.id !== id));
@@ -133,7 +128,42 @@ const App = () => {
     }
   }
 
+
+  const updateLikes = async id => {
+    const blogToUpdate = blogs.find(blog => blog.id === id);
+    
+    if (!blogToUpdate) {
+      console.error(`Blog with id ${id} not found`);
+      return
+    }
   
+    const updatedBlog = { ...blogToUpdate, likes: blogToUpdate.likes + 1 };
+    
+    try {
+      await blogService
+      .update(id, updatedBlog)
+      setBlogs(prevBlogs => prevBlogs.map(blog => blog.id === id ? updatedBlog : blog));
+    } catch (error) {
+      console.error('Error updating likes:', error);
+      setErrorMessage('Error updating likes. Please try again.');
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
+    }
+  }
+
+  const toggleImportanceOf = async (id) => {
+    const blog = blogs.find(n => n.id === id)
+    const changedBlog = { ...blog, important: !blog.important }
+
+    const returnedBlog = await blogService
+    .update(id, changedBlog);
+    setBlogs(blogs.map(blog => blog.id !== id ? blog : returnedBlog))
+    
+  }
+
+
+  const sortedBlogs = blogs.sort((a, b) => b.likes - a.likes);
 
   return (
     <>
@@ -158,12 +188,15 @@ const App = () => {
    
       <h2>blogs</h2>
     
-      {blogs.map(blog =>
+      {sortedBlogs.map(blog =>
         
         <Blog 
-        key={blog.id}
-        blog={blog}
-        onDelete={() => handleDelete(blog.id)}
+        key =  {blog.id}
+        blog = {blog}
+        onDelete = {() => handleDelete(blog.id)}
+        onClick = {()=> updateLikes(blog.id)}
+        onChange = {toggleImportanceOf}
+    
         />
        
       )}
