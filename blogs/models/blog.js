@@ -4,7 +4,6 @@ const blogSchema = new Schema({
   title: String,
   author: String,
   url: String,
-  important: Boolean,
   likes: { type: Number, default: 0 },
   user: {
     type: Schema.Types.ObjectId,

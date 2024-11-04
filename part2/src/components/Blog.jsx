@@ -1,15 +1,11 @@
 import {useState} from 'react'
 
 // eslint-disable-next-line react/prop-types
-export const Blog = ({ blog, onDelete, updateLikes, toggleImportance }) => {
+const Blog = ({ blog, handleDelete, addBlogLike}) => {
   const [showDetails, setShowDetails] = useState(false);
   const handleToggleDetails = () => {
     setShowDetails(!showDetails)
   }
-
-  const label = blog.important
-  ? 'make not important'
-  : 'make important'
 
   const blogStyle = {
     paddingTop: 10,
@@ -20,8 +16,8 @@ export const Blog = ({ blog, onDelete, updateLikes, toggleImportance }) => {
   }
 
   const detailsStyle = {
-    color: 'blue', // Cambia el color a lo que desees
-    fontWeight: 'bold' // Opcional: para hacer el texto más destacado
+    color: 'blue', 
+    fontWeight: 'bold' 
   }
 
   return (
@@ -34,15 +30,13 @@ export const Blog = ({ blog, onDelete, updateLikes, toggleImportance }) => {
         </button>
         {showDetails && (
           <div>
-            {/* Aquí puedes agregar los detalles del blog */}
             <p style={detailsStyle}>Details of blog:</p>
             <p>{blog.author}</p>
             <p>{blog.url}</p>   
-            <p>Likes: {blog.likes} <button onClick={updateLikes}>Like</button></p>
-            <li className='blog'>
-            <button onClick={toggleImportance}>{label}</button>
-            </li> <br />
-            <button onClick={onDelete}>Deleted</button>
+            <p>Likes: {blog.likes} <button onClick={addBlogLike}>Like</button></p>
+            <div className='blog'>
+            </div> <br />
+            <button onClick={handleDelete}>Deleted</button>
 
           </div>
           
@@ -52,3 +46,5 @@ export const Blog = ({ blog, onDelete, updateLikes, toggleImportance }) => {
     </>
   )
 }
+
+export default Blog

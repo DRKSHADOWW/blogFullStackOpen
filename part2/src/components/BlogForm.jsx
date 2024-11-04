@@ -1,13 +1,11 @@
-import { useState, useRef } from "react"
-import Togglable  from "./Togglable"
+import { useState} from "react"
+// import Togglable  from "./Togglable"
 
 // eslint-disable-next-line react/prop-types
-export const BlogForm = ({handleLogout, addBlogs}) => {
+export const BlogForm = ({ addBlog}) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
-
-  const eRef = useRef()
 
   const handleTitle = (e) =>{
     setTitle(e.target.value)  
@@ -25,16 +23,16 @@ export const BlogForm = ({handleLogout, addBlogs}) => {
    const handleSubmit = async(e) =>{
     e.preventDefault()
 
-    eRef.current.toggleVisibility();
+    
 
     const newBlog = {
-    title: title,
-    author: author,
-    url: url
+    title,
+    author,
+    url
     }
 
     try {
-      await addBlogs(newBlog);
+      await addBlog(newBlog);
       setTitle('');
       setAuthor('');
       setUrl('');
@@ -52,10 +50,10 @@ export const BlogForm = ({handleLogout, addBlogs}) => {
   return (
       <>
 
-      <button onClick={handleLogout}>log out</button>
-      <Togglable  buttonLabel='create new blog' ref={eRef}>
+      {/* <button onClick={handleLogout}>log out</button> */}
+      {/* <Togglable  buttonLabel='create new blog' ref={eRef}> */}
 
-      <h2>add new Blog desde Login</h2>
+      <h2>Create new blog</h2>
 
       <form onSubmit={handleSubmit}>
         
@@ -80,7 +78,7 @@ export const BlogForm = ({handleLogout, addBlogs}) => {
        
         <button type="submit">save</button>
       </form> 
-      </Togglable>
+      {/* </Togglable> */}
     </>
     ) 
   

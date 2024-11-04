@@ -8,7 +8,7 @@ export const LoginForm = ({ handleLogin,username,  onChangeUsername,password, on
   return (
 <>
 <div>
-  <Togglable buttonLabel='Show Login' >
+  {/* <Togglable buttonLabel='Show Login' > */}
     <form onSubmit={handleLogin}>
       <div>
         <label>Username: </label>
@@ -30,7 +30,7 @@ export const LoginForm = ({ handleLogin,username,  onChangeUsername,password, on
       </div>
       <button type="submit">Login</button>
     </form>
-    </Togglable>
+    {/* </Togglable> */}
     
     </div>
 
