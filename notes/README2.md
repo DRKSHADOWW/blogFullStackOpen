@@ -139,3 +139,9 @@ npm install --save-dev eslint-plugin-vitest-globals
 
 # Instalemos la librería user-event
 npm install --save-dev @testing-library/user-event
+
+# pagina docs testing
+testing library
+
+# Cobertura de la pruebas
+npm test -- --coverage

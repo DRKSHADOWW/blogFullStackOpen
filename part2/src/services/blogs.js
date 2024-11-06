@@ -13,15 +13,15 @@ const getAll = () => {
   return request.then(response => response.data)
 }
 
-const create = (newBlog ) => {
+const create = async (newBlog ) => {
   const config = {
       headers:{
         authorization: token 
       }}
-  return axios.post(baseUrl, newBlog, config)
+  return await axios.post(baseUrl, newBlog, config)
 }
 
-const blogDelete = async (id) =>{
+const blogDelete =  async (id) =>{
   const config = {
     headers:{
       authorization: token 

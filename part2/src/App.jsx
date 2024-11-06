@@ -43,29 +43,24 @@ const App = () => {
     try {
       const user = await loginService
       .login({
-        username, password,
+        username, 
+        password
       })
 
-      window.localStorage.setItem(
-        "loggedBloggedAppUser",  JSON.stringify(user)
-      )
+      window.localStorage.setItem("loggedBloggedAppUser",  JSON.stringify(user))
 
       blogService.setToken(user.token)
       setUser(user)
 
       setErrorMessage('signed correctly')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 3000)
+      setTimeout(() => {setErrorMessage(null)}, 3000)
 
       setUsername('')
       setPassword('')
 
     } catch (e) {
       setErrorMessage(`Wrong credentials ${e.message}`)
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 3000)
+      setTimeout(() => {setErrorMessage(null)}, 3000)
     }
   }
 
@@ -85,9 +80,7 @@ const App = () => {
   const addBlog = async (newBlog) =>{
     if (!newBlog.title || !newBlog.author || !newBlog.url) {
       setErrorMessage('Please complete all fields')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 3000)
+      setTimeout(() => {setErrorMessage(null)}, 3000)
       return
     }
     
@@ -98,43 +91,31 @@ const App = () => {
       eRef.current.toggleVisibility()
       setErrorMessage(`blog added successfully!`)
       
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 3000)
+      setTimeout(() => {setErrorMessage(null)}, 3000)
 
     }catch(e){
         setErrorMessage(`blog failed to add ${e.message}`)
-        setTimeout(() => {
-          setErrorMessage(null)
-        }, 3000)
+        setTimeout(() => {setErrorMessage(null)}, 3000)
       }
   }
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("¿Are you sure you want to delete this blog?");
+    const confirmDelete = window.confirm("¿Are you sure you want to delete this blog?")
     
     if (confirmDelete) {
-
-      blogService.setToken(user.token);
-      setUser(user)
-   
+      blogService.setToken(user.token)
       try {
-        await blogService
-        .blogDelete(id);
-        setBlogs(prevBlogs => prevBlogs.filter(blog => blog.id !== id));
-        setErrorMessage(`Blog deleted succesfully!`);
-        setTimeout(() => {
-          setErrorMessage(null)
-        }, 3000)
-      } catch (error) {
-        setErrorMessage('Error at deleted the blog.', error);
-        setTimeout(() => {
-          setErrorMessage(null)
-        }, 3000)
-      }
+        await blogService.blogDelete(id);
+        setBlogs(blogs.filter(blog => blog.id !== id));
+        setErrorMessage(`Blog deleted successfully!`);
+        setTimeout(() => { setErrorMessage(null); }, 3000);
+    } catch (error) {
+        setErrorMessage(`Error deleting blog: ${error.message}`);
+        setTimeout(() => { setErrorMessage(null); }, 3000);
     }
-  }
 
+  }
+  }
 
   const addBlogLike = async id => {
     const blogToUpdate = blogs.find(blog => blog.id === id)
@@ -185,8 +166,6 @@ const App = () => {
     const sortedBlogs = blogs.sort((a, b) => (b.likes - a.likes))
 
     return (
-
-      
       sortedBlogs.map(blog => (
         
         <Blog 
