@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import PropTypes from 'prop-types'
-import {Tcan} from '../i18n/index'
+import {Bcancel} from '../i18n/buttton-cancel'
 
 
 import { useState, forwardRef, useImperativeHandle } from 'react'
@@ -21,6 +21,8 @@ const Togglable = forwardRef(({children, buttonLabel}, ref) => {
     }
     })
 
+    const cancel = Bcancel.TOGGLABLE.CANCEL_BUTTON
+
   return (
 
     <>
@@ -31,7 +33,7 @@ const Togglable = forwardRef(({children, buttonLabel}, ref) => {
 
       <div style={showVisible}>
         {children}
-        <button onClick={toggleVisibility}>{Tcan.TOGGLABLE.CANCEL_BUTTON}</button>
+        <button onClick={toggleVisibility}>{cancel}</button>
       </div>
     </>
 

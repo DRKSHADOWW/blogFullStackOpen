@@ -23,7 +23,7 @@ const requestLogger = (request, response, next) => {
     } else if (error.name === 'MongoServerError' && error.message.includes('E11000 duplicate key error')) {
       return response.status(400).json({ error: 'expected `username` to be unique' })
     } else if (error.name ===  'JsonWebTokenError') {
-      return response.status(401).json({ error: 'token invalid' })
+      return response.status(401).json({ error: 'token invalid.' })
     } else if (error.name === 'TokenExpiredError') {
       return response.status(401).json({error: 'token expired'})
     } 
@@ -41,7 +41,7 @@ const requestLogger = (request, response, next) => {
 
       const decodedToken = jwt.verify(request.token, process.env.SECRET)
       if(!decodedToken.id  || !request.token){
-        return response.status(401).json({ error: 'token invalid' })
+        return response.status(401).json({ error: 'token invalid(1)' })
       }
     
     const {id: userId } = decodedToken

@@ -22,7 +22,11 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'cypress': cypress
     },
+  env:{
+    "cypress/globlas": true
+  },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,

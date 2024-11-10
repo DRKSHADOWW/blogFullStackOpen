@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, getAllByText, render, screen } from '@testing-library/react'
 import Togglable from './Togglable'
-import {Tcan} from '../i18n/index'
+import {Bcancel} from '../i18n/buttton-cancel'
 
 
 describe('<Togglable>', () =>{
@@ -39,10 +39,13 @@ describe('<Togglable>', () =>{
         
         const element = component.getByText('test div content')
         expect(element.parentNode).not.toHaveStyle('display: none')
-
-        const cancelButton = component.getByText(Tcan.TOGGLABLE.CANCEL_BUTTON)
+        
+        const cancel = Bcancel.TOGGLABLE.CANCEL_BUTTON
+        const cancelButton = component.getByText(cancel)
         fireEvent.click(cancelButton)
 
         expect(element.parentNode).toHaveStyle('display: none')
     })
+
+ 
 })

@@ -83,13 +83,17 @@ app.use(express.static('dist')) - Node
 copiar la carpeta dist de React a Node
 const baseUrl = '/api/notes' // se omite la url ya están en la misma direccion
 
+---------------------------------- part 4 -----------------------------------------------------
+
 
 
 ## prop-types
 npm install prop-types
 import PropTypes from 'prop-types'
 
+------------------------------------------- part 5 --------------------------------------------
 #### Testing React
+
 
 ## jsdom
 npm install --save-dev vitest jsdom
@@ -145,3 +149,80 @@ testing library
 
 # Cobertura de la pruebas
 npm test -- --coverage
+
+# PlayWright
+npm init playwright@latest
+
+Do you want to use TypeScript or Javascript? javascript
+Where to put your end-to-end test? test
+Add a github Actions workflow? false
+install ? true
+
+"scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+----------------------
+  $ npm test
+
+> notes-e2e@1.0.0 test
+> playwright test
+
+
+Running 6 tests using 5 workers
+  6 passed (3.9s)
+
+To open last HTML report run:
+
+  npx playwright show-report
+  -----------------------------
+reporte más detallado
+
+npm run test:report
+------------------------------
+interfaz gráfica
+npm run test -- --ui
+---------------
+"script":{
+  "start:test": "NODE_ENV=test node index.js"
+}
+
+
+Puedes definir el motor de navegador a utilizar con el parámetro de línea de comando:
+
+npm test -- --project chromium
+
+reducir el tiempo de espera a unos pocos segundos. Según la documentación, esto se puede hacer cambiando el archivo playwright.config.js de la siguiente manera:
+
+module.exports = defineConfig({
+  timeout: 3000,
+  fullyParallel: false,
+  workers: 1,
+  // ...
+})
+
+### Cypress
+
+rm-rf ./node_modules
+
+npm install cypress -D
+
+"scripts":{
+  "cypress:open": "cypress open"
+}
+
+npm run cypress:open
+
+
+// esto en la parte del backend
+"start:test": "NODE_ENV=test node index.js"
+
+npm install eslint-plugin-cypress -D
+"eslintConfig":{
+  env:{
+    "cypress/globlas": true
+}
+  "plugins":[
+    "cypress"
+  ]
+}

@@ -1,14 +1,15 @@
 ### GET
 GET http://localhost:3001/api/users
-
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY3MDVjN2E4MTc3NjI4MGUyM2NkMmE3YyIsImlhdCI6MTczMTE3NTkzNCwiZXhwIjoxNzMxMjYyMzM0fQ.PQiAgiBw2UZ49BtV7RLpwV3Zddmv-sxqbfEfsxdeYtQ
 ###POST
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "root",
-    "name": "Superuser",
-    "password": "salainen"
+    "username": "andres",
+    "name": "Superuser2",
+    "password": "12345"
 
 }
 
@@ -20,5 +21,4 @@ Content-Type: application/json
     "username": "",
     "name": "",
     "password": ""
-
 }

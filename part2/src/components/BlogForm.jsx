@@ -1,11 +1,14 @@
 import { useState} from "react"
+import { Bcreate } from '../i18n/button-create'
 // import Togglable  from "./Togglable"
 
 // eslint-disable-next-line react/prop-types
-export const BlogForm = ({ addBlog}) => {
+export const BlogForm = ({addBlog}) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
+
+  const create = Bcreate.CREATE.CREATE_BUTTON
 
   const handleTitle = (e) =>{
     setTitle(e.target.value)  
@@ -47,6 +50,7 @@ export const BlogForm = ({ addBlog}) => {
 
     
   
+  
   return (
       <>
 
@@ -57,26 +61,32 @@ export const BlogForm = ({ addBlog}) => {
 
       <form onSubmit={handleSubmit}>
         
-        <label >title: </label>
+        <label htmlFor="title">title</label>
         <input
+          data-testid='title'
+          id="title"
           value={title}
           onChange={handleTitle}
         />
 
-        <label >Author: </label>
+        <label htmlFor="author">author</label>
         <input
+          
+          data-testid='author'
+          id="author"
           value={author}
           onChange={handleAuthor}
         />
 
-        <label >Url: </label>
+        <label htmlFor="url">url</label>
         <input
+          data-testid='url'
+          id="url"
           value={url}
           onChange={handleUrl}
         />
 
-       
-        <button type="submit">save</button>
+        <button type="submit">{create}</button>
       </form> 
       {/* </Togglable> */}
     </>

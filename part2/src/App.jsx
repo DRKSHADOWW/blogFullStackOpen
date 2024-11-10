@@ -52,8 +52,8 @@ const App = () => {
       blogService.setToken(user.token)
       setUser(user)
 
-      setErrorMessage('signed correctly')
-      setTimeout(() => {setErrorMessage(null)}, 3000)
+      setErrorMessage(`signed correctly`)
+      setTimeout(() => {setErrorMessage(null)}, 5000)
 
       setUsername('')
       setPassword('')
@@ -70,7 +70,7 @@ const App = () => {
         setUser(null) 
         blogService.setToken(user.token)
         window.localStorage.removeItem('loggedBloggedAppUser')
-        window.localStorage.clear('loggedBloggedAppUser')
+        // window.localStorage.clear('loggedBloggedAppUser')
       }
     } catch (error) {
       console.error(`Error at logout:`, error);

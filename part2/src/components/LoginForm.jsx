@@ -9,11 +9,12 @@ export const LoginForm = ({ handleLogin,username,  onChangeUsername,password, on
 <>
 <div>
   {/* <Togglable buttonLabel='Show Login' > */}
-    <form onSubmit={handleLogin}>
+    <form  onSubmit={handleLogin}>
       <div>
         <label>Username: </label>
         <input
           type="text"
+          data-testid='username'
           value={username}
           name="username"
           onChange={onChangeUsername}
@@ -22,13 +23,14 @@ export const LoginForm = ({ handleLogin,username,  onChangeUsername,password, on
       <div>
         <label>Password: </label>
         <input
+          data-testid='password'
           type="password"
           value={password}
           name="password"
           onChange={onChangePassword}
         />
       </div>
-      <button type="submit">Login</button>
+      <button id="form-login-button">Login</button>
     </form>
     {/* </Togglable> */}
     
