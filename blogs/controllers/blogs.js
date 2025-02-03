@@ -3,6 +3,8 @@ const Blog = require("../models/blog")
 const User = require("../models/users")
 const {tokenExtractor} = require('../utils/middleware')
 
+
+
 blogsRouter.get('/', async (request, response) => {
   const  blogs = await Blog
   .find({})
@@ -36,7 +38,7 @@ blogsRouter.post('/',tokenExtractor, async (request, response) => {
 })
 
 
-blogsRouter.delete('/:id',tokenExtractor,  async(req, res)=>{
+blogsRouter.delete('/:id', tokenExtractor,  async(req, res)=>{
   const id = req.params.id
   const blog = await  Blog.findByIdAndDelete(id)
   if(blog){

@@ -1,6 +1,6 @@
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY3MDVjN2E4MTc3NjI4MGUyM2NkMmE3YyIsImlhdCI6MTcyODQ5MDE2OX0.Du4WVQqHvBq37S7KHQ_MpdFk16HfkWFfN1T3JdaYVN8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRya3NoYWRvd3d3IiwiaWQiOiI2NzM4YzlmZTU1YmY3YzBiODc5N2MyNjYiLCJpYXQiOjE3MzE3NzQ5ODUsImV4cCI6MTczMTg2MTM4NX0.s2cPrqSnYJzkSeQSV20rvCxbSTyM_RnjtZpyMwK_Z8U
 
     {
         "title": "CR7 Siuuuuuuuuu",

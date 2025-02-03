@@ -86,7 +86,7 @@ export const BlogForm = ({addBlog}) => {
           onChange={handleUrl}
         />
 
-        <button type="submit">{create}</button>
+        <button id="submit-create">{create}</button>
       </form> 
       {/* </Togglable> */}
     </>

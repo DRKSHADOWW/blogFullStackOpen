@@ -148,6 +148,7 @@ npm install --save-dev @testing-library/user-event
 testing library
 
 # Cobertura de la pruebas
+npm i -D @vitest/coverage-v8
 npm test -- --coverage
 
 # PlayWright
@@ -209,6 +210,7 @@ npm install cypress -D
 
 "scripts":{
   "cypress:open": "cypress open"
+  "test:e2e": "cypress run" // con este codigo se regfleja en la consola no es necesario
 }
 
 npm run cypress:open
@@ -216,6 +218,8 @@ npm run cypress:open
 
 // esto en la parte del backend
 "start:test": "NODE_ENV=test node index.js"
+
+### eslint
 
 npm install eslint-plugin-cypress -D
 "eslintConfig":{
@@ -226,3 +230,7 @@ npm install eslint-plugin-cypress -D
     "cypress"
   ]
 }
+
+cy.debug
+
+### Monorepo

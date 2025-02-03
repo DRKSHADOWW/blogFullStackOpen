@@ -23,11 +23,11 @@ const create = async (newBlog ) => {
 
 const blogDelete =  async (id) =>{
   const config = {
-    headers:{
+    headers: {
       authorization: token 
     }}
- return  await axios.delete(`${baseUrl}/${id}`, config)
-  
+ const response = await axios.delete(`${baseUrl}/${id}`, config)
+ return response.data
 }
 
 const update = (id, updatedBlog) => {
@@ -36,7 +36,7 @@ const update = (id, updatedBlog) => {
       authorization: token
     }}
 
-    return  axios.put(`${baseUrl}/${id}`, updatedBlog, config)
+    return axios.put(`${baseUrl}/${id}`, updatedBlog, config)
 
 }
 

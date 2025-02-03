@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Blog  from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
@@ -100,21 +100,22 @@ const App = () => {
   }
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm("¿Are you sure you want to delete this blog?")
-    
+    const confirmDelete = window.confirm("¿are you sure to want deleted this blog?");
+  
     if (confirmDelete) {
-      blogService.setToken(user.token)
+      blogService.setToken(user.token);
       try {
         await blogService.blogDelete(id);
-        setBlogs(blogs.filter(blog => blog.id !== id));
-        setErrorMessage(`Blog deleted successfully!`);
+        
+        setBlogs(prevBlogs => prevBlogs.filter(blog => blog.id !== id));
+        
+        setErrorMessage(`Blog deleted succesfully!`);
         setTimeout(() => { setErrorMessage(null); }, 3000);
-    } catch (error) {
-        setErrorMessage(`Error deleting blog: ${error.message}`);
+      } catch (error) {
+        setErrorMessage(`Error deleting the blog: ${error.message}`);
         setTimeout(() => { setErrorMessage(null); }, 3000);
+      }
     }
-
-  }
   }
 
   const addBlogLike = async id => {
